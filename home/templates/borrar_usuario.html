@@ -1,0 +1,26 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/general.css' %}">
+</head>
+<body>
+    {% block content %}
+<h2>¿Seguro que quieres eliminar a este usuario?</h2>
+<p>ID: {{ object.id_usuario }}</p>
+<p>Nombre: {{ object.nombre }}</p>
+<p>Apellido: {{ object.apellido }}</p>
+<p>DNI: {{ object.dni }}</p>
+<p>Edad: {{ object.edad }}</p>
+
+<form method="post">
+    {% csrf_token %}
+    <button type="submit">Sí, eliminar</button>
+</form>
+<a href="{% url 'lista_usuarios' %}">Cancelar</a>
+{% endblock %}
+</body>
+</html>

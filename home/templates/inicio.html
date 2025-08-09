@@ -1,0 +1,99 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/inicio.css' %}">
+</head>
+<body>
+    <header class="header">
+        <h1>JARDíN ESPACIO RAYUELA</h1>
+        <img src="{% static 'img/logo.jpg' %}" alt="Logo del Jardín" class="logo">
+    </header>
+    <nav>
+        
+      
+    </nav>
+    
+    <div class="user-info">
+      {% if request.user.is_authenticated %}
+        <span>{{ request.user.username }}</span>
+        <form action="{% url 'logout' %}" method="POST" style="margin: 0;">
+          {% csrf_token %}
+          <input type="submit" value="Logout" class="btn-logout" />
+        </form>
+        <nav class="nav">
+            
+                <a href="{% url 'lista_usuarios' %}">Lista de Usuarios</a>
+                <a href="{% url 'lista_localidades' %}">Lista de Localidades</a>
+                <a href="{% url 'lista_departamentos' %}">Lista de Departamentos</a>
+                <a href="{% url 'lista_provincias' %}">Lista de Provincias</a>
+                <a href="{% url 'lista_jardines' %}">Lista de Jardines</a>
+                <a href="{% url 'lista_sesiones' %}">Sesiones</a></li>
+                <a href="{% url 'lista_sesion_cuento' %}">Sesión - Cuento</a>
+                <a href="{% url 'lista_cuento' %}">Cuento</a>
+                <a href="{% url 'lista_palabra' %}">Palabras</a>
+                <a href="{% url 'lista_pictograma' %}">Pictogramas</a>
+                <a href="{% url 'lista_reporte_general' %}">Reportes</a>
+                <a href="{% url 'nueva_narracion' cuento_id=1 %}">Iniciar narración</a>
+            <!-- Añade más enlaces si quieres -->
+        
+        </nav>
+      {% else %}
+        <nav class="nav">
+            <a href="{% url 'inicio' %}">Inicio</a>
+            <a href="{% url 'login' %}">Login</a>
+            <a href="{% url 'registro' %}">Registro</a>
+        </nav>
+        
+      {% endif %}
+    </div>
+
+        
+        
+    <main class="contenido">
+       
+        <!-- Sección de Misión y Visión -->
+        <section class="mision-vision">
+           
+            <h2>¡Nuestra Misión!</h2>
+            <p>Proporcionar un ambiente seguro, divertido y educativo donde los niños puedan descubrir, aprender y crecer con amor y alegría.</p>
+            
+            <h2>¡Nuestra Visión!</h2>
+            <p>Ser reconocido como el jardín infantil líder en educación de calidad, promoviendo el desarrollo integral y la felicidad de cada niño.</p>
+        </section>
+
+        <!-- Imagen decorativa o pictograma -->
+        <section class="imagen-centrada">
+            <img src="{% static 'img/infantes.jpg' %}" alt="Niños felices" />
+        </section>
+    </main>
+
+
+<!-- Pie de página -->
+    <footer class="footer">
+    <div class="footer-contenido">
+        <p>&copy; 2025 <strong>Jardín Infantil Encantado</strong>. Todos los derechos reservados.</p>
+        <p>Síguenos en redes sociales:</p>
+        <div class="redes-sociales">
+            <a href="https://facebook.com" target="_blank" aria-label="Facebook">
+                <img src="{% static 'images/facebook.png' %}" alt="Facebook" />
+            </a>
+            <a href="https://instagram.com" target="_blank" aria-label="Instagram">
+                <img src="{% static 'images/instagram.png' %}" alt="Instagram" />
+            </a>
+            <!-- Agrega más íconos redes sociales si quieres -->
+        </div>
+    </div>
+</footer>
+      
+        
+        
+       
+
+</body>
+</html>

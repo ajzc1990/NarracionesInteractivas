@@ -1,0 +1,96 @@
+/* Todo el cuerpo centrado en pantalla */
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+  font-family: 'Comic Neue', cursive, sans-serif;
+  background-color: #fff0f5;
+  align-items: center;
+}
+
+/* Encabezado y logo */
+.encabezado {
+  background-color: #ffe4e1;
+  width: 100%;
+  padding: 20px;
+  text-align: center;
+}
+.encabezado h1 {
+  margin: 0;
+  font-size: 2.5em;
+  color: #d2691e;
+}
+
+/* Menú de navegación */
+.nav {
+  display: flex;
+  justify-content: center;
+  background-color: #87cefa;
+  width: 100%;
+  padding: 10px 0;
+}
+.nav a {
+  margin: 0 15px;
+  padding: 8px 14px;
+  background-color: #fff;
+  border-radius: 10px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #444;
+  transition: background 0.3s, transform 0.3s;
+}
+.nav a:hover {
+  background-color: #ffd700;
+  transform: scale(1.1);
+}
+
+/* Contenedor del formulario de registro, centrado */
+.contenedor-registro {
+  width: 100%;
+  max-width: 400px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  padding: 20px;
+  background-color: #ffe4e1;
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  text-align: center;
+}
+.contenedor-registro h2 {
+  color: #ff69b4;
+  margin-bottom: 10px;
+}
+.contenedor-registro p {
+  font-size: 1.2em;
+  margin-bottom: 20px;
+}
+.formulario-registro {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.formulario-registro input[type="text"],
+.formulario-registro input[type="email"],
+.formulario-registro input[type="password"] {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 1em;
+}
+.btn-guardar {
+  padding: 12px;
+  background-color: #ff7f50;
+  border: none;
+  border-radius: 10px;
+  color: #fff;
+  font-size: 1.1em;
+  cursor: pointer;
+  margin-top: 15px;
+  transition: background 0.3s;
+}
+.btn-guardar:hover {
+  background-color: #ffa07a;
+}
+
+/* Footer simple

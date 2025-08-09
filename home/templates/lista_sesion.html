@@ -1,0 +1,65 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/general.css' %}">
+</head>
+<body>
+    <nav class="nav">
+                <a href="{% url 'inicio' %}">Inicio</a>
+                <a href="{% url 'lista_usuarios' %}">Lista de Usuarios</a>
+                <a href="{% url 'lista_localidades' %}">Lista de Localidades</a>
+                <a href="{% url 'lista_departamentos' %}">Lista de Departamentos</a>
+                <a href="{% url 'lista_provincias' %}">Lista de Provincias</a>
+                <a href="{% url 'lista_jardines' %}">Lista de Jardines</a>
+                <a href="{% url 'lista_sesiones' %}">Sesiones</a></li>
+                <a href="{% url 'lista_sesion_cuento' %}">Sesión - Cuento</a>
+                <a href="{% url 'lista_cuento' %}">Cuento</a>
+                <a href="{% url 'lista_palabra' %}">Palabras</a>
+                <a href="{% url 'lista_pictograma' %}">Pictogramas</a>
+                <a href="{% url 'lista_reporte_general' %}">Reportes</a>
+            <!-- Añade más enlaces si quieres -->
+        
+        </nav>
+    {% block content %}
+<h2>Lista de Sesiones</h2>
+<p><a href="{% url 'nueva_sesion' %}">Agregar nueva sesión</a></p>
+<table border="1" cellpadding="5">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Usuario</th>
+            <th>Fecha</th>
+            <th>Hora</th>
+            <th>Localidad</th>
+            <th>Jardín</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for ses in sesiones %}
+        <tr>
+            <td>{{ ses.id_sesion_usuario }}</td>
+            <td>{{ ses.usuario.nombre }} {{ ses.usuario.apellido }}</td>
+            <td>{{ ses.fecha }}</td>
+            <td>{{ ses.hora }}</td>
+            <td>{{ ses.localidad.nombre }}</td>
+            <td>{{ ses.jardin.razon_social }}</td>
+            <td>
+                <a href="{% url 'editar_sesion' ses.pk %}">Editar</a> |
+                <a href="{% url 'borrar_sesion' ses.pk %}">Borrar</a>
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="7">No hay sesiones registradas.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+        <h2>Narrar: {{ cuento.titulo }}</h2>
+
+        <form method="post" enctype="multipart/form-data" id="narracionForm">
+            {% csrf_token %}
+            <!-- Ocultamos el input del formulario, ya que usaremos JavaScript para subir el archivo -->
+            {{ form.as_p }}
+            <button type="button" id="btnIniciar">Iniciar Grabación</button>
+            <button type="button" id="btnDetener" disabled>Detener Grabación</button>
+        </form>
+
+        <script>
+        let mediaRecorder;
+        let audioChunks = [];
+
+        const iniciarBtn = document.getElementById('btnIniciar');
+        const detenerBtn = document.getElementById('btnDetener');
+
+        iniciarBtn.onclick = async () => {
+            try {
+            const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+            mediaRecorder = new MediaRecorder(stream);
+            mediaRecorder.start();
+
+            audioChunks = [];
+            mediaRecorder.ondataavailable = event => {
+                audioChunks.push(event.data);
+            };
+
+            mediaRecorder.onstop = () => {
+                const blob = new Blob(audioChunks, { type: 'audio/webm' });
+                const formData = new FormData();
+
+                // Añadimos el blob directamente al formulario como archivo
+                formData.append('archivo_audio', blob, 'grabacion.webm');
+
+                // Submit automáticamente al backend
+                fetch("", {
+                method: 'POST',
+                headers: {
+                    'X-CSRFToken': '{{ csrf_token }}'
+                },
+                body: formData
+                }).then(response => {
+                if (response.ok) {
+                    alert('Narración subida con éxito!');
+                    // Opcional: recargar o redirigir
+                    location.reload();
+                } else {
+                    alert('Error al subir la narración.');
+                }
+                });
+            };
+
+            iniciarBtn.disabled = true;
+            detenerBtn.disabled = false;
+            } catch (err) {
+            alert('Error accediendo al micrófono: ' + err);
+            }
+        };
+
+        detenerBtn.onclick = () => {
+            if (mediaRecorder) {
+            mediaRecorder.stop();
+            }
+            iniciarBtn.disabled = false;
+            detenerBtn.disabled = true;
+        };
+        </script>
+
+
+
+</body>
+</html>

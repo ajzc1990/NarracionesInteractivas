@@ -1,0 +1,60 @@
+<!-- templates/reconocimiento.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Reconocimiento de Voz</title>
+</head>
+<body>
+    <h1>Reconocimiento de Voz en Tiempo Real</h1>
+    <button id="btnHablar">Hablar</button>
+    <p id="textoReconocido"></p>
+    <img id="imgResultado" src="" style="max-width: 400px; display:none;"/>
+
+    <script>
+        const btnHablar = document.getElementById('btnHablar');
+        const textoParrafo = document.getElementById('textoReconocido');
+        const imgResultado = document.getElementById('imgResultado');
+
+        btnHablar.onclick = () => {
+            const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+            if (!SpeechRecognition) {
+                alert('Tu navegador no soporta reconocimiento de voz.');
+                return;
+            }
+            const recognition = new SpeechRecognition();
+            recognition.lang = 'es-ES';
+            recognition.interimResults = false;
+
+            recognition.onstart = () => {
+                textoParrafo.innerText = 'Escuchando...';
+            };
+
+            recognition.onresult = (event) => {
+                const transcript = event.results[0][0].transcript;
+                textoParrafo.innerText = 'Texto: ' + transcript;
+
+                // Aquí puedes enviar el texto al backend si quieres procesarlo
+                // fetch('/procesar-texto/', { method: 'POST', body: JSON.stringify({texto: transcript}) })
+
+                // Como ejemplo, visualizamos en la página si detectamos la palabra 'hamburguesa'
+                if (transcript.toLowerCase().includes('hamburguesa')) {
+                    imgResultado.src = '/static/imagenes/hamburguesa.jpg';
+                    imgResultado.style.display = 'block';
+                } else {
+                    imgResultado.style.display = 'none';
+                }
+            };
+
+            recognition.onerror = (event) => {
+                alert('Error: ' + event.error);
+            };
+
+            recognition.onend = () => {
+                console.log('Reconocimiento terminado');
+            };
+
+            recognition.start();
+        };
+    </script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/general.css' %}">
+</head>
+<body>
+    {% block content %}
+<h2>¿Seguro que quieres eliminar esta sesión?</h2>
+<p>ID: {{ object.id_sesion_usuario }}</p>
+<p>Usuario: {{ object.usuario.nombre }} {{ object.usuario.apellido }}</p>
+<p>Fecha: {{ object.fecha }}</p>
+<p>Hora: {{ object.hora }}</p>
+
+<form method="post">
+    {% csrf_token %}
+    <button type="submit">Sí, eliminar</button>
+</form>
+<a href="{% url 'lista_sesiones' %}">Cancelar</a>
+{% endblock %}
+</body>
+</html>

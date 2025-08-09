@@ -1,0 +1,197 @@
+/* Reset básico y estilo de fuente para todo el sitio */
+body {
+  font-family: 'Comic Neue', cursive, sans-serif;
+  background-color: #fffaf0; /* Color pastel suave */
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  color: #444;
+}
+
+/* Encabezado con logo y título */
+.header {
+  width: 100%;
+  background-color: #ffe4e1; /* rosa pastel */
+  padding: 20px;
+  text-align: center;
+  position: relative;
+}
+.header h1 {
+  margin: 0;
+  font-size: 2.5em;
+  color: #d2691e;
+}
+.header img.logo {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  width: 80px;
+}
+
+/* Barra de navegación con estilo amigable y responsivo */
+.nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  background-color: #87cefa;
+  width: 100%;
+  padding: 10px 0;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+.nav a {
+  margin: 8px 15px;
+  padding: 8px 12px;
+  background-color: #fff;
+  border-radius: 10px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #444;
+  font-size: 1em;
+  transition: all 0.3s;
+}
+.nav a:hover {
+  background-color: #ffd700; /* dorado suave */
+  transform: scale(1.05);
+}
+
+/* Contenedores centrales con espacio cómodo */
+.contenido {
+  max-width: 1000px;
+  width: 90%;
+  padding: 20px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Títulos grandes y coloridos */
+h2 {
+  font-size: 2em;
+  margin-bottom: 15px;
+  color: #d2691e;
+  text-align: center;
+}
+
+/* Estilos para las tablas */
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  margin-top: 20px;
+  font-size: 0.95em;
+}
+thead {
+  background: linear-gradient(to right, #ffe4e1, #ffd700);
+}
+thead th {
+  padding: 12px;
+  font-weight: bold;
+  color: #444;
+  text-align: center;
+}
+tbody tr {
+  background-color: #fff;
+  transition: all 0.3s;
+}
+tbody tr:hover {
+  background-color: #ffe4e1;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+td {
+  padding: 12px;
+  text-align: center;
+}
+/* Enlaces y botones en tablas y acciones */
+a {
+  text-decoration: none;
+  padding: 8px 14px;
+  border-radius: 10px;
+  font-weight: bold;
+  transition: all 0.3s;
+}
+a:hover {
+  transform: scale(1.05);
+}
+a.editar {
+  background-color: #4CAF50; /* verde */
+  color: #fff;
+}
+a.borrar {
+  background-color: #f44336; /* rojo */
+  color: #fff;
+}
+
+/* Botones grandes y amigables en formularios */
+button[type="submit"] {
+  width: 100%;
+  padding: 14px;
+  margin-top: 20px;
+  border: none;
+  border-radius: 12px;
+  background-color: #ff7f50;
+  color: #fff;
+  font-size: 1.2em;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+button[type="submit"]:hover {
+  background-color: #ffa07a;
+  transform: scale(1.05);
+}
+
+/* Enlace para cancelar o volver */
+a.cancelar {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 10px 20px;
+  font-size: 1.1em;
+  color: #d2691e;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 12px;
+  background-color: #ffe4e1;
+  transition: all 0.3s;
+}
+a.cancelar:hover {
+  background-color: #ffd700;
+  transform: scale(1.05);
+}
+
+/* Responsive adjustments para pantallas pequeñas */
+@media(max-width: 480px) {
+  body {
+    padding: 10px;
+  }
+  h2 {
+    font-size: 1.5em;
+  }
+  table {
+    font-size: 0.9em;
+  }
+  a, button {
+    font-size: 1em;
+    padding: 10px;
+  }
+  nav {
+    flex-direction: column;
+    align-items: center;
+  }
+  nav a {
+    margin: 8px 0;
+  }
+}

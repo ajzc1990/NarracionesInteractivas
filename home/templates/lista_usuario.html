@@ -1,0 +1,65 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/general.css' %}">
+    
+</head>
+<body>
+    <nav class="nav">
+                <a href="{% url 'inicio' %}">Inicio</a>
+                <a href="{% url 'lista_usuarios' %}">Lista de Usuarios</a>
+                <a href="{% url 'lista_localidades' %}">Lista de Localidades</a>
+                <a href="{% url 'lista_departamentos' %}">Lista de Departamentos</a>
+                <a href="{% url 'lista_provincias' %}">Lista de Provincias</a>
+                <a href="{% url 'lista_jardines' %}">Lista de Jardines</a>
+                <a href="{% url 'lista_sesiones' %}">Sesiones</a></li>
+                <a href="{% url 'lista_sesion_cuento' %}">Sesión - Cuento</a>
+                <a href="{% url 'lista_cuento' %}">Cuento</a>
+                <a href="{% url 'lista_palabra' %}">Palabras</a>
+                <a href="{% url 'lista_pictograma' %}">Pictogramas</a>
+                <a href="{% url 'lista_reporte_general' %}">Reportes</a>
+            <!-- Añade más enlaces si quieres -->
+        
+        </nav>
+{% block content %}
+<h2>Lista de Usuarios</h2>
+<p><a href="{% url 'nuevo_usuario' %}">Agregar nuevo usuario</a></p>
+<table border="1" cellpadding="5">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>DNI</th>
+            <th>Edad</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for usuario in usuarios %}
+        <tr>
+            <td>{{ usuario.id_usuario }}</td>
+            <td>{{ usuario.nombre }}</td>
+            <td>{{ usuario.apellido }}</td>
+            <td>{{ usuario.dni }}</td>
+            <td>{{ usuario.edad }}</td>
+            <td>
+                <a href="{% url 'editar_usuario' usuario.pk %}">Editar</a> |
+                <a href="{% url 'borrar_usuario' usuario.pk %}">Borrar</a>
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="6">No hay usuarios registrados.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
+
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Cerrar Sesión</title>
+<!-- Puedes agregar tus estilos en un archivo externo si prefieres -->
+<style>
+  body {
+    font-family: 'Comic Neue', cursive, sans-serif;
+    margin: 0;
+    background-color: #f4f4f4;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    color: #333;
+  }
+
+  nav {
+    background-color: #007bff;
+    padding: 10px 20px;
+    width: 100%;
+    display: flex;
+    gap: 15px;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  nav a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  nav a:hover {
+    text-decoration: underline;
+  }
+
+  h1 {
+    margin-top: 50px;
+    font-size: 2em;
+    color: #333;
+  }
+
+  /* Estilo del botón de logout */
+  .btn-logout {
+    padding: 14px 28px;
+    background-color: #ff6347; /* rojo tomate vibrante */
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.2em;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 30px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s;
+  }
+  .btn-logout:hover {
+    background-color: #ff4500; /* tono más fuerte en hover */
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+  }
+</style>
+</head>
+<body>
+
+
+<h1>Has cerrado sesión correctamente</h1>
+
+<!-- Botón de logout con estilo mejorado -->
+<form action="{% url 'logout' %}" method="POST">
+  {% csrf_token %}
+  <button type="submit" class="btn-logout"><a href="{% url 'inicio' %}">Inicio</a></button>
+</form>
+
+</body>
+</html>

@@ -1,0 +1,42 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Registro - Jardín Encantado</title>
+<!-- Estilos CSS -->
+<link rel="stylesheet" href="{% static 'css/registro.css' %}">
+<!-- Fuente divertida -->
+<link href="https://fonts.googleapis.com/css2?family=Comic+Neue&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header class="encabezado">
+    <h1>Jardín Infantil Encantado</h1>
+</header>
+
+<!-- Menú de navegación -->
+<nav class="nav">
+    <a href="{% url 'inicio' %}">Inicio</a>
+    <!-- Otros enlaces -->
+</nav>
+
+<!-- Contenedor de registro centrado -->
+<div class="contenedor-registro">
+    <h2>Crear tu Cuenta</h2>
+    <p>Disfruta aprendiendo y jugando con nosotros</p>
+    <form action="{% url 'registro' %}" method="POST" class="formulario-registro">
+        {% csrf_token %}
+        {{ formulario }}
+        <button type="submit" class="btn-guardar">Registrar</button>
+    </form>
+</div>
+
+<!-- Pie o pie de página opcional -->
+<footer class="pie">
+    <p>&copy; 2025 Jardín Infantil Encantado</p>
+</footer>
+
+</body>
+</html>

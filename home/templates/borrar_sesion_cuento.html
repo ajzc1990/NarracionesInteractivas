@@ -1,0 +1,25 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/general.css' %}">
+</head>
+<body>
+    {% block content %}
+<h2>¿Seguro que quieres eliminar esta relación?</h2>
+<p>ID: {{ object.id_sesion_cuento }}</p>
+<p>Sesión: {{ object.sesion.id_sesion_usuario }}</p>
+<p>Cuento: {{ object.cuento.titulo }}</p>
+<p>Tiempo lectura: {{ object.tiempo_lectura }}</p>
+
+<form method="post">
+    {% csrf_token %}
+    <button type="submit">Sí, eliminar</button>
+</form>
+<a href="{% url 'lista_sesion_cuento' %}">Cancelar</a>
+{% endblock %}
+</body>
+</html>

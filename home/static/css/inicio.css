@@ -1,0 +1,186 @@
+/* Estilo general para un diseño infantil */
+body {
+  font-family: 'Comic Neue', cursive, sans-serif;
+  background-color: #fef9f4;
+  margin: 0;
+  padding: 0;
+  color: #333;
+}
+
+
+.header {
+  background-color: #ffe4e1;
+  padding: 20px;
+  text-align: center;
+  position: relative;
+}
+.header h1 {
+  margin: 0;
+  font-size: 2.5em;
+  color: #d2691e;
+}
+.logo {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  width: 80px;
+}
+
+.nav {
+  display: flex;
+  justify-content: center;
+  background-color: #87cefa;
+  padding: 10px 0;
+}
+.nav a {
+  margin: 0 15px;
+  padding: 8px 12px;
+  background-color: #fff;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: bold;
+  color: #333;
+  transition: background 0.3s;
+}
+.nav a:hover {
+  background-color: #ffd700;
+  color: #fff;
+}
+
+.contenido {
+    padding: 30px;
+    background-color: #fffaf0; /* tono pastel suave */
+    border-radius: 20px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    max-width: 900px;
+    margin: 20px auto;
+}
+
+/* Sección misión y visión */
+.mision-vision h2 {
+    color: #ff69b4; /* rosa alegre */
+    text-align: center;
+    margin-top: 20px;
+    font-family: 'Comic Neue', cursive;
+}
+.mision-vision p {
+    font-size: 1.2em;
+    line-height: 1.6;
+    text-align: justify;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+/* Imagen centrada */
+.imagen-centrada {
+    text-align: center;
+}
+.imagen-centrada img {
+    width: 250px;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+
+/* Estilo para el footer */
+.footer {
+    background-color: #ffe4e1; /* rosa pastel */
+    padding: 30px 20px;
+    text-align: center;
+    margin-top: 40px;
+    border-top: 3px solid #ff69b4;
+}
+
+.footer-contenido {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.footer p {
+    font-family: 'Comic Neue', cursive;
+    font-size: 1em;
+    margin: 10px 0;
+    color: #555;
+}
+
+/* Estilo para íconos de redes sociales */
+.redes-sociales {
+    margin-top: 10px;
+}
+
+.redes-sociales a {
+    margin: 0 10px;
+    display: inline-block;
+    transition: transform 0.3s;
+}
+.redes-sociales a:hover {
+    transform: scale(1.2);
+}
+
+.redes-sociales img {
+    width: 30px;
+    height: 30px;
+}
+
+/* Estilo de la barra de navegación */
+nav.nav {
+  background-color: #87cefa; /* color de fondo en tono cielo */
+  display: flex;
+  flex-wrap: wrap; /* ajusta las opciones en pantallas pequeñas */
+  justify-content: center;
+  padding: 10px 0;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* Lista sin marcas, en línea */
+nav.nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: 15px; /* separación entre enlaces */
+}
+
+/* Enlaces en la barra, con estilo amigable */
+nav.nav ul li a {
+  display: flex;
+  align-items: center;
+  padding: 8px 14px;
+  background-color: #fff;
+  border-radius: 10px;
+  font-weight: bold;
+  color: #444;
+  text-decoration: none;
+  font-size: 1em;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+/* Efecto hover con cambio de color y ligero escalado */
+nav.nav ul li a:hover {
+  background-color: #ffd700; /* dorado suave */
+  transform: scale(1.05);
+}
+
+/* Añade iconos si quieres usar Font Awesome */
+nav.nav ul li a i {
+  margin-right: 8px;
+}
+/* Estilo del botón de logout */
+.btn-logout {
+  padding: 10px 20px;
+  background-color: #ff6347; /* tomate, color vibrante */
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-weight: bold;
+  font-family: 'Comic Neue', cursive;
+  cursor: pointer;
+  font-size: 1em;
+  transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s;
+  margin-top: 10px;
+}
+.btn-logout:hover {
+  background-color: #ff4500; /* naranja fuerte */
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}

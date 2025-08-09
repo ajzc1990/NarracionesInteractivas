@@ -1,0 +1,45 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Ingreso - Jardín Encantado</title>
+<!-- Enlace a CSS personalizado -->
+
+<link rel="stylesheet" href="{% static 'css/login.css' %}">
+<!-- Fuente divertida y amigable -->
+<link href="https://fonts.googleapis.com/css2?family=Comic+Neue&display=swap" rel="stylesheet">
+</head>
+<body>
+<header class="header">
+    <h1>Jardín Infantil Encantado</h1>
+</header>
+
+<nav class="nav">
+    <a href="{% url 'inicio' %}">Inicio</a>
+    <!-- Otros enlaces si deseas -->
+</nav>
+
+<main class="contenedor-login">
+    <section class="titulo-login">
+        <h2>¡Bienvenido!</h2>
+        <p>Ingresa a tu cuenta y disfruta aprendiendo</p>
+    </section>
+
+    <section class="formulario">
+        <form action="{% url 'login' %}" method="POST" class="login-form">
+            {% csrf_token %}
+            {{ formulario.as_p }}
+            <button type="submit" class="btn-ingresar">Iniciar Sesión</button>
+        </form>
+        <p class="mensaje">¿No tienes cuenta? <a href="{% url 'registro' %}">Regístrate aquí</a></p>
+    </section>
+</main>
+
+<!-- Pie de página con estilo infantil -->
+<footer class="footer">
+    <p>&copy; 2025 Jardín Infantil Encantado. Todos los derechos reservados.</p>
+</footer>
+</body>
+</html>
